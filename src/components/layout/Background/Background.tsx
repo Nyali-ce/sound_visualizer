@@ -1,27 +1,11 @@
 import "./Background.scss";
 import * as THREE from "three";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { use } from "motion/react-client";
 
 function Background() {
-    const location = useLocation();
-
-    class shouldAnimateClass {
-        shouldAnimate: boolean;
-        constructor(shouldAnimate: boolean) {
-            this.shouldAnimate = shouldAnimate;
-        }
-    }
-
-    const getLocation = () => {
-        return useLocation();
-    }
-
-    const shouldAnimateObj = new shouldAnimateClass(false);
 
     useEffect(() => {
         const canvas = document.getElementById("background") as HTMLCanvasElement;
@@ -94,7 +78,7 @@ function Background() {
         material.uniforms.resolution.value.y = renderer.domElement.height;
 
         // create stars
-        for (let i = 0; i < 1500; i++) {
+        for (let i = 0; i < 200; i++) {
             const star = new THREE.Mesh(
                 new THREE.SphereGeometry(0.25, 24, 24),
                 material
@@ -159,17 +143,6 @@ function Background() {
                 }
             }
 
-            if (shouldAnimateObj.shouldAnimate) {
-                for (let i = 0; i < stars.length; i++) {
-                    //put stars in a circular motion
-                    stars[i].position.x = 10 * Math.cos(i + time);
-                    stars[i].position.y = 10 * Math.sin(i + time);
-                    stars[i].position.z = -400;
-                }
-
-                shouldAnimateObj.shouldAnimate = false;
-            }
-
             composer.render();
 
             frames++;
@@ -189,7 +162,7 @@ function Background() {
         );
         composer.addPass(bloomPass);
 
-        // requestAnimationFrame(render);
+        requestAnimationFrame(render);
 
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
@@ -209,12 +182,6 @@ function Background() {
             pointer.style.top = `${e.clientY - window.innerHeight / 2}px`;
         });
     }, []);
-
-    useEffect(() => {
-        if (location.pathname === "/Main") {
-            shouldAnimateObj.shouldAnimate = true;
-        }
-    }, [location.pathname]);
 
     return (
         <>
