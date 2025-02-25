@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './selectionMenu.scss';
+import SelectionMenuProps from '../../../interfaces/SelectionMenuProps';
 
-interface SelectionMenuProps {
-    options: { name: string, icon: string, alt: string }[];
-}
-
-const SelectionMenu = ({ options }: SelectionMenuProps) => {
+const SelectionMenu = ({ options, onSelectOption }: SelectionMenuProps) => {
     if (!options) {
         return null;
     }
@@ -18,7 +15,11 @@ const SelectionMenu = ({ options }: SelectionMenuProps) => {
                 <div key={option.name} className='left-option-container'>
                     <div
                         className={`left-option ${selectedOption === option.name ? 'selected' : ''}`}
-                        onClick={() => setSelectedOption(option.name)}
+                        onClick={() => {
+                            setSelectedOption(option.name)
+                            onSelectOption(option)
+                            }
+                        }
                     >
                         <div className='left-option-icon'>
                             <img src={option.icon} alt={option.alt} className='option-icon' />

@@ -134,3 +134,19 @@ span.menu-span {
   z-index: 0;
   position: absolute;
 }
+
+.made-by {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.2rem;
+    color: v.$color-1;
+    font-family: 'Roboto';
+    margin: 0.5rem;
+}
+
+.made-by-link {
+    color: v.$color-1;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+}

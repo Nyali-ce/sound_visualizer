@@ -1,10 +1,16 @@
 import { SelectionMenu, OptionsContainer } from '../components/layout';
 import './Main.scss';
 import { motion } from 'framer-motion';
-
 import Selections from '../components/selections';
+import { useState } from 'react';
 
 const Main = () => {
+    const [selection, setSelection] = useState(Selections[0]);
+
+    const handleSelectOption = (option: any) => {
+        setSelection(option);
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -13,13 +19,21 @@ const Main = () => {
             transition={{ duration: 1 }}
             className='animate'
         >
+
             <div id='main'>
-                <SelectionMenu options={Selections} />
-                <OptionsContainer />
+                <SelectionMenu options={Selections} onSelectOption={handleSelectOption}/>
+
+                {/* 
+                //! I don't know why you need to call the component instead of just passing it as a prop, this could fuck me in the ass later 
+                // ? also how the fuck do you comment shit in a react component
+                */}
+                <OptionsContainer component={selection.component()} /> 
+                
                 <div id='preview'>
 
                 </div>
             </div>
+
         </motion.div>
     );
 }

@@ -1,8 +1,11 @@
 import "./Background.scss";
 import * as THREE from "three";
 import { useEffect, useState } from "react";
+// @ts-ignore
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+// @ts-ignore
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+// @ts-ignore
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 
 function Background() {
