@@ -1,4 +1,4 @@
-import { SelectionMenu, OptionsContainer } from '../components/layout';
+import { SelectionMenu, OptionsContainer, Preview } from '../components/layout';
 import './Main.scss';
 import { motion } from 'framer-motion';
 import Selections from '../components/selections';
@@ -29,9 +29,8 @@ const Main = () => {
                 */}
                 <OptionsContainer component={selection.component()} /> 
                 
-                <div id='preview'>
+                <Preview />
 
-                </div>
             </div>
 
         </motion.div>
