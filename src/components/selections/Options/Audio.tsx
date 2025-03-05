@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion';
 import { OptionContext } from '../../../Contexts/OptionContext';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Title, Text, MediaInput, FileInfo } from '../Blocks';
 
 function Audio() {
-    const { audioFile, setAudioFile } = useContext(OptionContext);
-    const [audioDuration, setAudioDuration] = useState<number | null>(null);
+    const { 
+        audioFile, 
+        setAudioFile,
+        audioDuration,
+        setAudioDuration 
+    } = useContext(OptionContext);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
@@ -32,10 +36,11 @@ function Audio() {
             key={'audio'}
             className='option-container'
         >
+
             <Title title='Audio'/>
             <MediaInput text='Upload Audio' fileType='audio' handleFileChange={handleFileChange} icon='music-note.svg'/>
 
-            {!audioFile && <Text text='Upload an MP3, WAV, or AAC file to sync your audio with the preview.'/>}
+            {!audioFile && <Text text='Upload an audio file to use in Sound Visualizer Thing.'/>}
             {audioFile && <FileInfo fileName={audioFile.name} duration={audioDuration ? audioDuration : 0}/>}
 
         </motion.div>
