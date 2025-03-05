@@ -30,3 +30,7 @@ body {
 html {
   background-color: v.$background-color;
 }
+
+svg {
+  user-select: none;
+}
