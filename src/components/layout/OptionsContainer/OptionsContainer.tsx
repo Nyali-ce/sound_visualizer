@@ -2,15 +2,15 @@ import './optionsContainer.scss';
 import { AnimatePresence } from 'framer-motion';
 
 interface OptionsContainerProps {
-    component: JSX.Element;
+    Component: () => JSX.Element;
 }
 
-const OptionsContainer = ({ component }: OptionsContainerProps) => {
+const OptionsContainer = ({ Component }: OptionsContainerProps) => {
     return (
         <>
             <div id='left-options-container'>
                 <AnimatePresence>
-                {component}
+                <Component />
                 </AnimatePresence>
             </div>
         </>

@@ -68,6 +68,7 @@
   height: 50px;
   width: 160px;
   z-index: 9999;
+  transition: all 0.2s ease;
 }
 
 button.menu-button {
@@ -113,6 +114,15 @@ span.menu-span {
     bottom: 50px;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+a.button:active {
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.button:active span{
+    transform: scale(0.95);
 }
 
 .menu-middle {

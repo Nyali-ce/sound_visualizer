@@ -23,16 +23,11 @@ const Main = () => {
             <div id='main'>
                 <SelectionMenu options={Selections} onSelectOption={handleSelectOption}/>
 
-                {/* 
-                //! I don't know why you need to call the component instead of just passing it as a prop, this could fuck me in the ass later 
-                // ? also how the fuck do you comment shit in a react component
-                */}
-                <OptionsContainer component={selection.component()} /> 
+                <OptionsContainer Component={selection.component} /> 
                 
                 <Preview />
-
             </div>
-
+            
         </motion.div>
     );
 }

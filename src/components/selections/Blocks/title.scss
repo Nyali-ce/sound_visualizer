@@ -1,0 +1,10 @@
+@use "../../../variables" as v;
+
+.option-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: v.$color-3;
+    text-align: left;
+    margin: 0;
+    padding-bottom: 18px;
+}
