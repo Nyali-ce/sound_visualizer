@@ -96,7 +96,7 @@ const Menu = () => {
                 exit={{  rotate: 360, opacity: 0 }}
                 className="made-by"
             >
-                Made with ❤ by <a className="made-by-link" href="nyalice.com">Nyali_ce</a>
+                Made with ❤ by <a className="made-by-link" href="https://nyalice.com" target="_blank" rel="noopener noreferrer">Nyali_ce</a>
             </motion.p>
         </motion.div>
     );
