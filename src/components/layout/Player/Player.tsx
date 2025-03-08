@@ -25,6 +25,10 @@ const Player = () => {
         setIsMuted(event.target.value === '0');
     };
 
+    const handleExport = () => {
+        // export video
+    };
+
     return (
         <div id='player-container'>
             {/* play/pause button */}
@@ -68,6 +72,12 @@ const Player = () => {
                         onChange={(e) => setCurrentTime(parseFloat(e.target.value))}
                     />
                 </div>
+
+                <button className='player-element export-button'
+                    onClick={handleExport}
+                >Export Video
+
+                </button>
             </div>
         </div>
     );
