@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { OptionContext } from '../../../Contexts/OptionContext';
 import { useContext } from 'react';
-import { Title, Text, MediaInput, FileInfo } from '../Blocks';
+import { Title, Text, MediaInput, InfoContainer } from '../Blocks';
 
 function Audio() {
     const { 
@@ -41,7 +41,12 @@ function Audio() {
             <MediaInput text='Upload Audio' fileType='audio' handleFileChange={handleFileChange} icon='music-note.svg'/>
 
             {!audioFile && <Text text='Upload an audio file to use in Sound Visualizer Thing.'/>}
-            {audioFile && <FileInfo fileName={audioFile.name} duration={audioDuration ? audioDuration : 0}/>}
+            {audioFile && 
+                <>
+                    <InfoContainer text='Audio File' info={audioFile.name}/> 
+                    <InfoContainer text='Duration' info={audioDuration.toFixed(2) + 's'}/>
+                </>
+            }
 
         </motion.div>
     );
