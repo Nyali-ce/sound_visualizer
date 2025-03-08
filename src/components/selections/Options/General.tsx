@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
+import { Title, Text } from '../Blocks';
+import { invoke } from '@tauri-apps/api/core';
 
 function General() {
     return (
-            <motion.div
+        <motion.div
             initial={{ opacity: 0, x: -400 }}
             animate={{ opacity: 1, x: 0 }}
             transition={
@@ -11,12 +13,25 @@ function General() {
                     ease: "easeInOut",
                 }}
             exit={{ opacity: 0, x: 400 }}
-                key={'general'}
-                className='option-container'
-            >
-                <h1 className='option-title'>General</h1>
-                <p className='option-description'>General content goes here.</p>
-            </motion.div>
+            key={'general'}
+            className='option-container'
+        >
+
+            <Title title='General' />
+            <Text text='This is the general section of the app. You can use this to change general settings.' />
+            <button
+                onClick={() => {
+                    invoke('create_video',
+                        {
+
+                        }
+                    )
+                }
+                }>
+                Click me!
+            </button>
+
+        </motion.div>
     );
 }
 
