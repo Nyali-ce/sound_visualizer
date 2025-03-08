@@ -2,6 +2,7 @@ import './player.scss'
 import { OptionContext } from '../../../Contexts/OptionContext';
 import React, { useState, useContext } from 'react';
 import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import render from '../../../render';
 
 const Player = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -25,8 +26,8 @@ const Player = () => {
         setIsMuted(event.target.value === '0');
     };
 
-    const handleExport = () => {
-        // export video
+    const handleRender = () => {
+        render();
     };
 
     return (
@@ -73,9 +74,9 @@ const Player = () => {
                     />
                 </div>
 
-                <button className='player-element export-button'
-                    onClick={handleExport}
-                >Export Video
+                <button className='player-element' id='render-button'
+                    onClick={handleRender}
+                >Render Video
 
                 </button>
             </div>

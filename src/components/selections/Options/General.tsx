@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Title, Text } from '../Blocks';
-import { invoke } from '@tauri-apps/api/core';
 
 function General() {
     return (
@@ -19,17 +18,6 @@ function General() {
 
             <Title title='General' />
             <Text text='This is the general section of the app. You can use this to change general settings.' />
-            <button
-                onClick={() => {
-                    invoke('create_video',
-                        {
-
-                        }
-                    )
-                }
-                }>
-                Click me!
-            </button>
 
         </motion.div>
     );

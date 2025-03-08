@@ -18,7 +18,7 @@ struct Options {
 }
 
 #[command]
-fn create_video(options: Options) -> Result<(), String> {
+fn render(options: Options) -> Result<(), String> {
     let output = Command::new("ffmpeg")
         .args([
             "-f",
@@ -48,7 +48,7 @@ fn create_video(options: Options) -> Result<(), String> {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet, create_video])
+        .invoke_handler(tauri::generate_handler![greet, render])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
