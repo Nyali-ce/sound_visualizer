@@ -1,11 +1,13 @@
-import Title from "./Title";
-import Text from "./Text";
-import MediaInput from "./MediaInput";
-import FileInfo from "./FileInfo";
+import Title from "./Title/Title";
+import Text from "./Text/Text";
+import MediaInput from "./MediaInput/MediaInput";
+import InfoContainer from "./InfoContainer/InfoContainer";
+import ColorPicker from "./ColorPicker/ColorPicker";
 
 export {
     Title,
     Text,
     MediaInput,
-    FileInfo
+    InfoContainer,
+    ColorPicker
 }
