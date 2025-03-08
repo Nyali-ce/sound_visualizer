@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
+import { Title, ColorPicker } from '../Blocks';
+import { useContext } from 'react';
+import { OptionContext } from '../../../Contexts/OptionContext';
 
 function Backdrop() {
+    const { 
+        backgroundColor, 
+        setBackgroundColor 
+    } = useContext(OptionContext);
+
     return (
             <motion.div
             initial={{ opacity: 0, x: -400 }}
@@ -14,8 +22,8 @@ function Backdrop() {
                 key={'backdrop'}
                 className='option-container'
             >
-                <h1 className='option-title'>Backdrop</h1>
-                <p className='option-description'>Backdrop content goes here.</p>
+                <Title title='Backdrop' />
+                <ColorPicker text='Backdrop Color' initialColor={backgroundColor} onChange={setBackgroundColor} />
             </motion.div>
     );
 }
