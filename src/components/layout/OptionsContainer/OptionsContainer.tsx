@@ -10,7 +10,7 @@ const OptionsContainer = ({ Component }: OptionsContainerProps) => {
         <>
             <div id='left-options-container'>
                 <AnimatePresence>
-                <Component />
+                {Component()}
                 </AnimatePresence>
             </div>
         </>

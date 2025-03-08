@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "sound_visualizer",
+        "title": "Music Visualizer Thing",
         "width": 800,
         "height": 600
       }
