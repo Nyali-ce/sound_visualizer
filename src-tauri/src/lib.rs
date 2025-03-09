@@ -36,6 +36,14 @@ fn save_audio_file(file_name: String, file_data: Vec<u8>) -> Result<(), String> 
 
 #[command]
 fn render(options: Options) -> Result<(), String> {
+    // if output folder does not exist, create it
+    let mut path = PathBuf::from("output");
+    if !path.exists() {
+        std::fs::create_dir_all(&path).map_err(|e| e.to_string())?;
+    }
+
+    // if file already exists, delete it
+    path.push("render.mp4");
     let output = Command::new("ffmpeg")
         .args([
             "-f",
@@ -52,7 +60,7 @@ fn render(options: Options) -> Result<(), String> {
             "-c:a",
             "aac",
             "-shortest",
-            "video_with_audio.mp4",
+            "output/render.mp4",
         ])
         .output()
         .map_err(|e| e.to_string())?;
