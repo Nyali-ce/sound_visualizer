@@ -5,11 +5,11 @@ import { Title, Text, MediaInput, InfoContainer } from '../Blocks';
 import { invoke } from '@tauri-apps/api/core';
 
 function Audio() {
-    const { 
-        audioFile, 
+    const {
+        audioFile,
         setAudioFile,
         audioDuration,
-        setAudioDuration 
+        setAudioDuration
     } = useContext(OptionContext);
     const [loading, setLoading] = useState(false);
 
@@ -33,7 +33,7 @@ function Audio() {
                 const uint8Array = new Uint8Array(arrayBuffer);
 
                 // Send the file to the backend
-                invoke('save_audio_file', { fileName: file.name, fileData: Array.from(uint8Array) })
+                invoke('save_file', { fileName: file.name, fileType: 'Audio', fileData: Array.from(uint8Array) })
                     .then(() => {
                         console.log('File saved successfully');
                     })
@@ -62,16 +62,16 @@ function Audio() {
             key={'audio'}
             className='option-container'
         >
-            <Title title='Audio'/>
-            <MediaInput text='Upload Audio' fileType='audio' handleFileChange={handleFileChange} icon='music-note.svg'/>
+            <Title title='Audio' />
+            <MediaInput text='Upload Audio' fileType='audio' handleFileChange={handleFileChange} icon='music-note.svg' type='header' />
 
-            {loading && <Text text='Loading... Please wait.'/>}
+            {loading && <Text text='Loading... Please wait.' />}
 
-            {!audioFile && !loading && <Text text='Upload an audio file to use in Sound Visualizer Thing.'/>}
-            {audioFile && !loading && 
+            {!audioFile && !loading && <Text text='Upload an audio file to use in Sound Visualizer Thing.' />}
+            {audioFile && !loading &&
                 <>
-                    <InfoContainer text='Audio File' info={audioFile.name}/> 
-                    <InfoContainer text='Duration' info={audioDuration.toFixed(2) + 's'}/>
+                    <InfoContainer text='Audio File' info={audioFile.name} />
+                    <InfoContainer text='Duration' info={audioDuration.toFixed(2) + 's'} />
                 </>
             }
         </motion.div>

@@ -82,7 +82,7 @@
     transition: transform 0.1s ease-in-out;
 }
 
-.selected {
+.selected-option {
     border: 2px solid v.$color-2-highlight;
     cursor: pointer;
     box-shadow: 0 0 10px v.$color-2-highlight;
@@ -90,7 +90,7 @@
     transition: transform 0.2s ease-in-out, border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.selected:hover {
+.selected-option:hover {
     border: 2px solid v.$color-2-50;
     cursor: pointer;
     transform: scale(1.08);

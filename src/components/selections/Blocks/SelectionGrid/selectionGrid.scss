@@ -1,0 +1,60 @@
+@use "../../../../variables" as v;
+
+.selection-grid {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    align-items: center;
+}
+
+.selection-grid-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.selection-grid-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px;
+
+
+}
+
+.selection-box {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 550;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: auto;    
+    height: 24px;
+
+    border: 2px solid v.$color-3-highlight;
+    background-color: v.$color-1-50;
+    cursor: pointer;
+
+    &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+}
+
+.selection-box:hover {
+    background-color: v.$color-1-75;
+}
+
+.selected-grid {
+    background-color: v.$color-1-highlight;
+}

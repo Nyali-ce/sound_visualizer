@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode} from "react";
+import { createContext, useState, ReactNode } from "react";
 
 import OptionContextProps from "../interfaces/OptionContextProps";
 
@@ -17,6 +17,15 @@ export const OptionContext = createContext<OptionContextProps>({
 
     backgroundImage: null,
     setBackgroundImage: () => {},
+
+    visualizerColor: '#ff0000',
+    setVisualizerColor: () => {},
+
+    smoothness: 1,
+    setSmoothness: () => {},
+
+    particleEffect: false,
+    setParticleEffect: () => {},
 });
 
 export const OptionProvider = ({ children }: { children: ReactNode }) => {
@@ -25,6 +34,9 @@ export const OptionProvider = ({ children }: { children: ReactNode }) => {
     const [backgroundType, setBackgroundType] = useState<'color' | 'image'>('color');
     const [backgroundColor, setBackgroundColor] = useState<string>('#000000');
     const [backgroundImage, setBackgroundImage] = useState<File | null>(null);
+    const [visualizerColor, setVisualizerColor] = useState<string>('#ff0000');
+    const [smoothness, setSmoothness] = useState<number>(1);
+    const [particleEffect, setParticleEffect] = useState<boolean>(false);
 
     return (
         <OptionContext.Provider value={{ 
@@ -32,8 +44,11 @@ export const OptionProvider = ({ children }: { children: ReactNode }) => {
             audioDuration, setAudioDuration,
             backgroundType, setBackgroundType,
             backgroundColor, setBackgroundColor,
-            backgroundImage, setBackgroundImage
-}}>
+            backgroundImage, setBackgroundImage,
+            visualizerColor, setVisualizerColor,
+            smoothness, setSmoothness,
+            particleEffect, setParticleEffect
+        }}>
             {children}
         </OptionContext.Provider>
     );

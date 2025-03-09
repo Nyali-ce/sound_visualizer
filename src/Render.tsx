@@ -7,11 +7,19 @@ const Render = () => {
     const {
         audioFile,
         audioDuration,
-        backgroundColor }
-        = useContext(OptionContext);
+        backgroundType,
+        backgroundColor,
+        backgroundImage,
+        visualizerColor,
+        smoothness,
+        particleEffect
+    } = useContext(OptionContext);
         
-        const handleRender = () => {
-        console.log('rendering...');
+    const handleRender = () => {
+        if (!audioFile) {
+            alert('Please select an audio file');
+            return;
+        }
 
         const renderProps: RustRenderProps = {
             options: {
@@ -19,7 +27,12 @@ const Render = () => {
                 height: 1080,
                 audio_file: `./audio_files/${audioFile?.name}`,
                 duration: toInteger(audioDuration),
-                color: backgroundColor
+                color: backgroundColor,
+                visualizer_color: visualizerColor,
+                smoothness: smoothness,
+                particle_effect: particleEffect,
+                background_type: backgroundType,
+                background_image: backgroundImage ? `./background_files/${backgroundImage.name}` : null
             }
         };
 

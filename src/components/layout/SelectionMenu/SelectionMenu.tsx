@@ -23,7 +23,7 @@ const SelectionMenu = ({ options, onSelectOption }: SelectionMenuProps) => {
             {options.map(option => (
                 <div key={option.name} className='left-option-container'>
                     <div
-                        className={`left-option ${selectedOption === option.name ? 'selected' : ''}`}
+                        className={`left-option ${selectedOption === option.name ? 'selected-option' : ''}`}
                         onClick={() => {
                             setSelectedOption(option.name)
                             onSelectOption(option)
