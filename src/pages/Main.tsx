@@ -23,6 +23,7 @@ const Main = () => {
             <div id='main'>
 
                 <div id='middle'>
+                    
                     <SelectionMenu options={Selections} onSelectOption={handleSelectOption} />
                     <OptionsContainer Component={selection.component} />
                     <Preview />

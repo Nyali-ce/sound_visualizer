@@ -2,7 +2,8 @@ import './player.scss'
 import { OptionContext } from '../../../Contexts/OptionContext';
 import React, { useState, useContext } from 'react';
 import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
-import Render from '../../../render';
+import Render from '../../../Render';
+import { motion} from 'framer-motion';
 
 const Player = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -27,7 +28,14 @@ const Player = () => {
     };
 
     return (
-        <div id='player-container'>
+        <motion.div id='player-container'
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
+            transition={{
+                delay: 0,
+                duration: 2,
+                ease: "easeInOut",
+                }}>
             {/* play/pause button */}
             <div id='player'>
 
@@ -72,7 +80,7 @@ const Player = () => {
 
                 <Render/>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
