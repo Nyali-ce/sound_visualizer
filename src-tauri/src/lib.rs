@@ -1,3 +1,6 @@
+use std::fs::File;
+use std::io::Write;
+use std::path::PathBuf;
 use std::process::Command;
 use tauri::command;
 
@@ -15,6 +18,20 @@ struct Options {
     height: u32,
     duration: u32,
     color: String,
+    audio_file: String,
+}
+
+#[command]
+fn save_audio_file(file_name: String, file_data: Vec<u8>) -> Result<(), String> {
+    let mut path = PathBuf::from("audio_files");
+    if !path.exists() {
+        std::fs::create_dir_all(&path).map_err(|e| e.to_string())?;
+    }
+    path.push(file_name);
+
+    let mut file = File::create(path).map_err(|e| e.to_string())?;
+    file.write_all(&file_data).map_err(|e| e.to_string())?;
+    Ok(())
 }
 
 #[command]
@@ -28,11 +45,14 @@ fn render(options: Options) -> Result<(), String> {
                 "color=c={}:s={}x{}:d={}",
                 options.color, options.width, options.height, options.duration
             ),
+            "-i",
+            &options.audio_file,
             "-c:v",
             "libx264",
-            "-t",
-            &options.duration.to_string(),
-            "video.mp4",
+            "-c:a",
+            "aac",
+            "-shortest",
+            "video_with_audio.mp4",
         ])
         .output()
         .map_err(|e| e.to_string())?;
@@ -48,7 +68,7 @@ fn render(options: Options) -> Result<(), String> {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet, render])
+        .invoke_handler(tauri::generate_handler![greet, save_audio_file, render])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

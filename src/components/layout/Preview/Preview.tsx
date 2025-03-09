@@ -1,5 +1,5 @@
 import './preview.scss';
-import { useEffect, useRef, useContext } from 'react';
+import { useContext } from 'react';
 import { OptionContext } from '../../../Contexts/OptionContext';
 
 const Preview = () => {
