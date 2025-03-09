@@ -2,8 +2,7 @@ import './player.scss'
 import { OptionContext } from '../../../Contexts/OptionContext';
 import React, { useState, useContext } from 'react';
 import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
-import render from '../../../render';
-import { invoke } from "@tauri-apps/api/core";
+import Render from '../../../render';
 
 const Player = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -11,7 +10,7 @@ const Player = () => {
     const [isMuted, setIsMuted] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     
-    const { audioDuration, backgroundColor } = useContext(OptionContext);
+    const { audioDuration} = useContext(OptionContext);
 
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
@@ -25,20 +24,6 @@ const Player = () => {
     const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setVolume(parseFloat(event.target.value));
         setIsMuted(event.target.value === '0');
-    };
-
-    const handleRender = () => {
-        // const {
-        //     audioDuration,
-        //     backgroundColor,
-        // } = useContext(OptionContext);
-    
-        invoke('render', {options: {
-            width: 1920,
-            height: 1080,
-            duration: Math.ceil(audioDuration),
-            color: backgroundColor,
-        }})
     };
 
     return (
@@ -85,11 +70,7 @@ const Player = () => {
                     />
                 </div>
 
-                <button className='player-element' id='render-button'
-                    onClick={handleRender}
-                >Render Video
-
-                </button>
+                <Render/>
             </div>
         </div>
     );
