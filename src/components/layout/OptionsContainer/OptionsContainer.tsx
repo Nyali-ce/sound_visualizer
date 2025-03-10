@@ -1,5 +1,6 @@
 import './optionsContainer.scss';
 import { AnimatePresence } from 'framer-motion';
+import { JSX } from 'react';
 import { motion } from 'framer-motion';
 
 interface OptionsContainerProps {
@@ -19,7 +20,7 @@ const OptionsContainer = ({ Component }: OptionsContainerProps) => {
                         ease: "easeInOut",
                     }}>
                 <AnimatePresence>
-                {Component()}
+                    <Component key={Component.name} />
                 </AnimatePresence>
             </motion.div>
         </>

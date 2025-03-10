@@ -3,15 +3,15 @@ import { OptionContext } from '../../../Contexts/OptionContext';
 import React, { useState, useContext } from 'react';
 import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp, FaVolumeDown } from 'react-icons/fa';
 import Render from '../../../Render';
-import { motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Player = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(1);
     const [isMuted, setIsMuted] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
-    
-    const { audioDuration} = useContext(OptionContext);
+
+    const { audioDuration } = useContext(OptionContext);
 
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
@@ -35,18 +35,18 @@ const Player = () => {
                 delay: 0,
                 duration: 2,
                 ease: "easeInOut",
-                }}>
+            }}>
             {/* play/pause button */}
             <div id='player'>
 
-                <button onClick={togglePlayPause} className='player-element' id='play-pause'> 
+                <button onClick={togglePlayPause} className='player-element' id='play-pause'>
                     {isPlaying ? <FaPause /> : <FaPlay />}
                 </button>
 
                 {/* volume control, on hover show a slider for volume, and click for mute */}
                 <div className='player-element' id='volume-control'>
                     <button onClick={toggleMute}>
-                        {isMuted ? <FaVolumeMute /> : volume > 0.5 ? <FaVolumeUp /> : <FaVolumeDown/>}
+                        {isMuted ? <FaVolumeMute /> : volume > 0.5 ? <FaVolumeUp /> : <FaVolumeDown />}
                     </button>
                     <div className='volume-slider'>
                         <input
@@ -78,7 +78,7 @@ const Player = () => {
                     />
                 </div>
 
-                <Render/>
+                <Render />
             </div>
         </motion.div>
     );

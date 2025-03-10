@@ -5,18 +5,18 @@ import { Title, Text, MediaInput, InfoContainer } from '../Blocks';
 import { invoke } from '@tauri-apps/api/core';
 
 function Audio() {
+    const [loading, setLoading] = useState(false);
+
     const {
         audioFile,
         setAudioFile,
         audioDuration,
         setAudioDuration
     } = useContext(OptionContext);
-    const [loading, setLoading] = useState(false);
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        setLoading(true);
         if (event.target.files) {
-            setLoading(true);
-
             const file = event.target.files[0];
             setAudioFile(file);
 
@@ -39,14 +39,14 @@ function Audio() {
                     })
                     .catch((error: Error) => {
                         console.error('Error saving file:', error);
-                        setLoading(false);
                     })
                     .finally(() => {
-                        // Hide loading message
                         setLoading(false);
                     });
             };
             reader.readAsArrayBuffer(file);
+        } else {
+            setLoading(false);
         }
     };
 
