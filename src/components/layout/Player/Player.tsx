@@ -1,7 +1,7 @@
 import './player.scss'
 import { OptionContext } from '../../../Contexts/OptionContext';
 import React, { useState, useContext } from 'react';
-import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp, FaVolumeDown } from 'react-icons/fa';
 import Render from '../../../Render';
 import { motion} from 'framer-motion';
 
@@ -46,7 +46,7 @@ const Player = () => {
                 {/* volume control, on hover show a slider for volume, and click for mute */}
                 <div className='player-element' id='volume-control'>
                     <button onClick={toggleMute}>
-                        {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                        {isMuted ? <FaVolumeMute /> : volume > 0.5 ? <FaVolumeUp /> : <FaVolumeDown/>}
                     </button>
                     <div className='volume-slider'>
                         <input

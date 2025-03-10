@@ -12,8 +12,8 @@ pub struct Options {
     pub color: String,
     pub audio_file: String,
     pub visualizer_color: String,
-    pub smoothness: u32,
-    pub particle_effect: bool,
+    // pub smoothness: u32,
+    // pub particle_effect: bool,
     pub background_type: String,
     pub background_image: Option<String>,
 }

@@ -4,6 +4,7 @@ import MediaInput from "./MediaInput/MediaInput";
 import InfoContainer from "./InfoContainer/InfoContainer";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import SelectionGrid from "./SelectionGrid/SelectionGrid";
+import NumberInput from "./NumberInput/NumberInput";
 
 export {
     Title,
@@ -11,5 +12,6 @@ export {
     MediaInput,
     InfoContainer,
     ColorPicker,
-    SelectionGrid
+    SelectionGrid,
+    NumberInput
 }

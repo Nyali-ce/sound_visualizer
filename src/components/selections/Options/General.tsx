@@ -1,7 +1,24 @@
 import { motion } from 'framer-motion';
-import { Title, Text } from '../Blocks';
+import { Title, NumberInput } from '../Blocks';
+import { useContext } from 'react';
+import { OptionContext } from '../../../Contexts/OptionContext';
 
 function General() {
+    const {
+        width,
+        setWidth,
+        height,
+        setHeight
+    } = useContext(OptionContext);
+
+    const handleWidthChange = (newWidth: number) => {
+        setWidth(parseInt(newWidth.toFixed(0)));
+    }
+
+    const handleHeightChange = (newHeight: number) => {
+        setHeight(parseInt(newHeight.toFixed(0)));
+    }
+
     return (
         <motion.div
             initial={{ opacity: 0, x: -400 }}
@@ -17,8 +34,23 @@ function General() {
         >
 
             <Title title='General' />
-            <Text text='This is the general section of the app. You can use this to change general settings.' />
-
+            {/* width and height select */}
+            <NumberInput
+                label='Width'
+                value={width}
+                onChange={handleWidthChange}
+                min={0}
+                max={1920 * 2}
+                step={1}
+            />
+            <NumberInput
+                label='Height'
+                value={height}
+                onChange={handleHeightChange}
+                min={0}
+                max={1080 * 2}
+                step={1}
+            />
         </motion.div>
     );
 }

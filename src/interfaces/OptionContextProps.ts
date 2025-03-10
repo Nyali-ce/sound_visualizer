@@ -22,6 +22,12 @@ interface OptionContextProps {
 
     particleEffect: boolean;
     setParticleEffect: (enabled: boolean) => void;
+
+    width: number;
+    setWidth: (width: number) => void;
+
+    height: number;
+    setHeight: (height: number) => void;
 }
 
 export default OptionContextProps;

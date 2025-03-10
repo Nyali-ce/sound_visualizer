@@ -12,7 +12,9 @@ const Render = () => {
         backgroundImage,
         visualizerColor,
         smoothness,
-        particleEffect
+        particleEffect,
+        width,
+        height
     } = useContext(OptionContext);
         
     const handleRender = () => {
@@ -23,8 +25,8 @@ const Render = () => {
 
         const renderProps: RustRenderProps = {
             options: {
-                width: 1920,
-                height: 1080,
+                width,
+                height,
                 audio_file: `./audio_files/${audioFile?.name}`,
                 duration: toInteger(audioDuration),
                 color: backgroundColor,
@@ -32,7 +34,7 @@ const Render = () => {
                 smoothness: smoothness,
                 particle_effect: particleEffect,
                 background_type: backgroundType,
-                background_image: backgroundImage ? `./background_files/${backgroundImage.name}` : null
+                background_image: backgroundImage ? `./background_files/${backgroundImage.name}` : null,
             }
         };
 

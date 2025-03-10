@@ -4,7 +4,12 @@ import { OptionContext } from '../../../Contexts/OptionContext';
 import { motion } from 'framer-motion';
 
 const Preview = () => {
-    const { backgroundColor } = useContext(OptionContext);
+    const {
+        backgroundColor,
+        backgroundType,
+        visualizerColor,
+        backgroundImage
+    } = useContext(OptionContext);
 
     return (
         <motion.div id='preview-container'
@@ -15,9 +20,9 @@ const Preview = () => {
                 duration: 1,
                 ease: "easeInOut",
             }}
-        
+
         >
-            <div id='preview' style={{backgroundColor: backgroundColor}}>
+            <div id='preview' style={{ backgroundColor: backgroundColor }}>
             </div>
         </motion.div>
     );

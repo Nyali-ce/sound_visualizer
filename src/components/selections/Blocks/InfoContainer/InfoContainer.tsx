@@ -5,8 +5,8 @@ const InfoContainer = ({text, info}: {text: string, info: string}) => {
     return (
             <div className='info-container'>
                 <div className='info-section'>
-                    <p className='info-text'>{text}</p>
-                    <p className='info-text'>{info}</p>
+                    <label className='info-text'>{text}</label>
+                    <label className='info-text'>{info}</label>
                 </div>
             </div>
     );

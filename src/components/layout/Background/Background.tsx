@@ -1,6 +1,6 @@
 import "./Background.scss";
 import * as THREE from "three";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // @ts-ignore
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 // @ts-ignore

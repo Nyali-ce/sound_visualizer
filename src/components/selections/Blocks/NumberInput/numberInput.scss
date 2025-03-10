@@ -1,0 +1,69 @@
+@use "../../../../variables" as v;
+
+.number-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.number-input-label {
+    color: v.$color-3;
+    margin: 10px;
+}
+
+.number-input-range {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.number-input-slider {
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    border-radius: 5px;
+    background: v.$color-1;
+    outline: none;
+    
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: v.$color-3;
+        cursor: pointer;
+        // make the part in front of the thumb the same color as the thumb
+        
+    }
+}
+
+.number-input-field {
+    width: 38px;
+    border: none;
+    // underline
+    border-bottom: 1px solid v.$color-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 1rem;
+    color: v.$color-3;
+    background-color: transparent;
+
+    // remove the arrows
+    -moz-appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid v.$color-1-highlight;
+    }
+}

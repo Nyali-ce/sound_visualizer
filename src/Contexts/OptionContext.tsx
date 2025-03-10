@@ -26,6 +26,12 @@ export const OptionContext = createContext<OptionContextProps>({
 
     particleEffect: false,
     setParticleEffect: () => {},
+
+    width: 1920,
+    setWidth: () => {},
+
+    height: 1080,
+    setHeight: () => {}
 });
 
 export const OptionProvider = ({ children }: { children: ReactNode }) => {
@@ -37,6 +43,8 @@ export const OptionProvider = ({ children }: { children: ReactNode }) => {
     const [visualizerColor, setVisualizerColor] = useState<string>('#ff0000');
     const [smoothness, setSmoothness] = useState<number>(1);
     const [particleEffect, setParticleEffect] = useState<boolean>(false);
+    const [width, setWidth] = useState<number>(1920);
+    const [height, setHeight] = useState<number>(1080);
 
     return (
         <OptionContext.Provider value={{ 
@@ -47,7 +55,9 @@ export const OptionProvider = ({ children }: { children: ReactNode }) => {
             backgroundImage, setBackgroundImage,
             visualizerColor, setVisualizerColor,
             smoothness, setSmoothness,
-            particleEffect, setParticleEffect
+            particleEffect, setParticleEffect,
+            width, setWidth,
+            height, setHeight
         }}>
             {children}
         </OptionContext.Provider>
