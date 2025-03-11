@@ -80,6 +80,23 @@ pub fn render(options: Options) -> Result<(), String> {
         .map_err(|e| e.to_string())?;
 
     if output.status.success() {
+        if cfg!(target_os = "windows") {
+            Command::new("explorer")
+                .arg("output")
+                .spawn()
+                .map_err(|e| e.to_string())?;
+        } else if cfg!(target_os = "macos") {
+            Command::new("open")
+                .arg("output")
+                .spawn()
+                .map_err(|e| e.to_string())?;
+        } else if cfg!(target_os = "linux") {
+            Command::new("xdg-open")
+                .arg("output")
+                .spawn()
+                .map_err(|e| e.to_string())?;
+        }
+
         Ok(())
     } else {
         Err(String::from_utf8_lossy(&output.stderr).to_string())

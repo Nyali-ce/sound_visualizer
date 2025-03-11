@@ -10,7 +10,9 @@ function Backdrop() {
         setBackgroundColor,
         backgroundType,
         setBackgroundType,
-        setBackgroundImage
+        setBackgroundImage,
+        setWidth,
+        setHeight
     } = useContext(OptionContext);
 
     const onBackgroundTypeChange = (type: string) => {
@@ -39,6 +41,8 @@ function Backdrop() {
                     invoke('save_file', { fileName: file.name, fileType: 'Image', fileData: Array.from(uint8Array) })
                         .then(() => {
                             console.log('File saved successfully');
+                            setWidth(image.width);
+                            setHeight(image.height);
                         })
                         .catch((error: Error) => {
                             console.error('Error saving file:', error);
